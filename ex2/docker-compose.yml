@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+
+  mongo-seed:
+    image: mongo:7.0
+    depends_on:
+      - mongodb
+    volumes:
+      - ./livros.json:/livros.json
+    command: mongoimport --host mongodb --db livrosdb --collection livros --type json --file /livros.json --jsonArray
+
+  api:
+    build: .
+    ports:
+      - "19020:19020"
+    environment:
+      - MONGODB_URI=mongodb://mongodb/livrosdb
+    depends_on:
+      - mongodb
+      - mongo-seed
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "19021:80"
+    volumes:
+      - .:/usr/share/nginx/html

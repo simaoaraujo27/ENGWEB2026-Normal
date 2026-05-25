@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+
+  mongo-seed:
+    image: mongo:7.0
+    depends_on:
+      - mongodb
+    volumes:
+      - ./jogos.json:/jogos.json
+    command: mongoimport --host mongodb --db jogostabuleiro --collection jogos --type json --file /jogos.json --jsonArray
+
+  api:
+    build: .
+    ports:
+      - "17000:17000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb/jogostabuleiro
+    depends_on:
+      - mongodb
+      - mongo-seed

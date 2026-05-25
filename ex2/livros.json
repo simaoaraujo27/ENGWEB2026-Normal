@@ -1,0 +1,44 @@
+[
+  {
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "paginas": 328,
+    "genero": "Ficção Científica",
+    "lido": true
+  },
+  {
+    "titulo": "Admirável Mundo Novo",
+    "autor": "Aldous Huxley",
+    "paginas": 268,
+    "genero": "Ficção Científica",
+    "lido": false
+  },
+  {
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "paginas": 1178,
+    "genero": "Fantasia",
+    "lido": true
+  },
+  {
+    "titulo": "Orgulho e Preconceito",
+    "autor": "Jane Austen",
+    "paginas": 432,
+    "genero": "Romance",
+    "lido": false
+  },
+  {
+    "titulo": "Crime e Castigo",
+    "autor": "Fiódor Dostoiévski",
+    "paginas": 671,
+    "genero": "Ficção",
+    "lido": true
+  },
+  {
+    "titulo": "O Pequeno Príncipe",
+    "autor": "Antoine de Saint-Exupéry",
+    "paginas": 96,
+    "genero": "Ficção",
+    "lido": false
+  }
+]

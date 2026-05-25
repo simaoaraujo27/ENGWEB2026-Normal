@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: API de Jogos de Tabuleiro
+  version: 1.0.0
+  description: API de dados para gerir jogos de tabuleiro.
+servers:
+  - url: http://localhost:17000
+paths:
+  /jogos:
+    get:
+      summary: Retorna a lista de jogos
+      parameters:
+        - in: query
+          name: editora
+          schema:
+            type: string
+          description: Filtra jogos pelo nome da editora (campo 'name')
+      responses:
+        '200':
+          description: Uma lista de jogos
+    post:
+      summary: Adiciona um novo jogo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Jogo criado com sucesso
+  /jogos/{id}:
+    get:
+      summary: Retorna a informação de um jogo específico
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Informação do jogo
+    put:
+      summary: Altera um jogo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Jogo atualizado com sucesso
+    delete:
+      summary: Elimina um jogo
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Jogo eliminado com sucesso
+  /autores:
+    get:
+      summary: Retorna a lista de autores ordenada
+      responses:
+        '200':
+          description: Uma lista de autores
+  /categorias:
+    get:
+      summary: Retorna a lista de categorias ordenada
+      responses:
+        '200':
+          description: Uma lista de categorias
